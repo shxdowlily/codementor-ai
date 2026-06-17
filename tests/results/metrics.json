@@ -1,0 +1,152 @@
+{
+  "mode": "mock",
+  "baseline": null,
+  "main": {
+    "solution": "main_hybrid_static_plus_llm",
+    "precision": 1.0,
+    "recall": 0.923,
+    "f1": 0.96,
+    "tp": 12,
+    "fp": 0,
+    "fn": 1,
+    "per_file": {
+      "01_sql_injection_fstring.py": {
+        "expected": [
+          "sql_injection"
+        ],
+        "predicted": [
+          "sql_injection"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "02_sql_injection_via_variable.py": {
+        "expected": [
+          "sql_injection"
+        ],
+        "predicted": [
+          "sql_injection"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "03_eval_usage.py": {
+        "expected": [
+          "eval_exec_usage"
+        ],
+        "predicted": [
+          "eval_exec_usage"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "04_hardcoded_secret.py": {
+        "expected": [
+          "hardcoded_secret"
+        ],
+        "predicted": [
+          "hardcoded_secret"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "05_mutable_default.py": {
+        "expected": [
+          "mutable_default_arg"
+        ],
+        "predicted": [
+          "mutable_default_arg"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "06_bare_except.py": {
+        "expected": [
+          "bare_except"
+        ],
+        "predicted": [
+          "bare_except"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "07_broad_except_pass.py": {
+        "expected": [
+          "broad_except"
+        ],
+        "predicted": [
+          "broad_except"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "08_off_by_one_logic.py": {
+        "expected": [
+          "logic_bug"
+        ],
+        "predicted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "09_clean_code.py": {
+        "expected": [],
+        "predicted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "10_high_complexity.py": {
+        "expected": [
+          "high_complexity"
+        ],
+        "predicted": [
+          "high_complexity"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "11_multiple_issues.py": {
+        "expected": [
+          "bare_except",
+          "hardcoded_secret",
+          "sql_injection"
+        ],
+        "predicted": [
+          "bare_except",
+          "hardcoded_secret",
+          "sql_injection"
+        ],
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      },
+      "12_edge_empty.py": {
+        "expected": [],
+        "predicted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "13_edge_syntax_error.py": {
+        "expected": [
+          "syntax_error"
+        ],
+        "predicted": [
+          "syntax_error"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  }
+}

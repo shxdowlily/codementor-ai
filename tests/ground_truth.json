@@ -1,0 +1,57 @@
+{
+  "_readme": "Ground truth для тестового набора Track 3. Для каждого файла перечислены КАТЕГОРИИ проблем, которые мы заведомо туда заложили. evaluate.py сравнивает с этим списком предсказания static-слоя и LLM-слоя и считает precision/recall/F1. Это не реальный production-датасет — это контролируемый бенчмарк, который мы написали сами, чтобы честно измерить качество системы (см. ограничения в README: на реальном чужом коде результаты будут другими).",
+  "fixtures": {
+    "01_sql_injection_fstring.py": {
+      "expected": ["sql_injection"],
+      "note": "Базовый случай прямой инъекции через f-string."
+    },
+    "02_sql_injection_via_variable.py": {
+      "expected": ["sql_injection"],
+      "note": "Та же проблема, но через промежуточную переменную — проверка taint-tracking."
+    },
+    "03_eval_usage.py": {
+      "expected": ["eval_exec_usage"],
+      "note": "Произвольное выполнение кода через eval()."
+    },
+    "04_hardcoded_secret.py": {
+      "expected": ["hardcoded_secret"],
+      "note": "Секрет зашит в исходный код."
+    },
+    "05_mutable_default.py": {
+      "expected": ["mutable_default_arg"],
+      "note": "Классическая ловушка Python с дефолтным аргументом-списком."
+    },
+    "06_bare_except.py": {
+      "expected": ["bare_except"],
+      "note": "Перехват всех исключений без разбора."
+    },
+    "07_broad_except_pass.py": {
+      "expected": ["broad_except"],
+      "note": "Исключение проглатывается молча."
+    },
+    "08_off_by_one_logic.py": {
+      "expected": ["logic_bug"],
+      "note": "ВАЖНО: это чисто логическая ошибка, статический анализатор её принципиально не видит — это намеренно, чтобы показать границу слоя 1 и ценность слоя 2 (LLM). В mock-режиме ожидаемый recall по этому файлу = 0, это не баг, это задокументированное ограничение mock-демонстрации."
+    },
+    "09_clean_code.py": {
+      "expected": [],
+      "note": "Чистый код без проблем — тест на false positives (precision)."
+    },
+    "10_high_complexity.py": {
+      "expected": ["high_complexity"],
+      "note": "Высокая цикломатическая сложность одной функции."
+    },
+    "11_multiple_issues.py": {
+      "expected": ["sql_injection", "hardcoded_secret", "bare_except"],
+      "note": "Комбинация нескольких проблем сразу — проверка, что находки не 'перекрывают' друг друга."
+    },
+    "12_edge_empty.py": {
+      "expected": [],
+      "note": "Edge case: пустой/почти пустой файл, проверка отсутствия краша."
+    },
+    "13_edge_syntax_error.py": {
+      "expected": ["syntax_error"],
+      "note": "Edge case: синтаксически некорректный код, проверка graceful handling без исключения в самом анализаторе."
+    }
+  }
+}
